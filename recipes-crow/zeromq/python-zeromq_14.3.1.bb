@@ -9,8 +9,36 @@ SRC_URI[md5sum] = "7196b4a6fbf98022f17ffa924be3d68d"
 
 S = "${WORKDIR}/pyzmq-${PV}"
 
-DEPENDS = " python-re python-multiprocessing python-core util-linux zeromq " 
-RDEPENDS_${PN} = " python-re python-multiprocessing python-core util-linux zeromq " 
+DEPENDS = " python-core \
+            python-ctypes \
+            python-datetime \ 
+            python-fcntl \
+            python-logging \
+            python-math \
+            python-threading \
+            python-io \
+            python-codecs \
+            python-shell \
+            python-netserver \
+            python-multiprocessing \
+            util-linux \
+            zeromq "
+
+RDEPENDS_${PN} = " python-core \
+            python-ctypes \
+            python-datetime \
+            python-fcntl \
+            python-logging \
+            python-math \
+            python-threading \
+            python-io \
+            python-codecs \
+            python-netserver \
+            python-shell \
+            python-multiprocessing \
+            util-linux \
+            zeromq "
+
 FILES_${PN}-dbg += "${libdir}/python2.7/site-packages/zmq/backend/cython/.debug"
 
 inherit setuptools
