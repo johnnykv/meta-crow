@@ -16,5 +16,4 @@ PACKAGES = "\
 RDEPENDS_packagegroup-dolos-beeswarm = "\
 packagegroup-core-full-cmdline \
 python-beeswarm \
-zeromq \
 "
