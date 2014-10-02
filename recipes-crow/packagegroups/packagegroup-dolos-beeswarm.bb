@@ -16,4 +16,5 @@ PACKAGES = "\
 RDEPENDS_packagegroup-dolos-beeswarm = "\
 packagegroup-core-full-cmdline \
 python-beeswarm \
+python-gevent \
 "
