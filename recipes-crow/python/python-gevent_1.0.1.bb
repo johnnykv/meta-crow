@@ -6,7 +6,7 @@ SECTION = "devel/python"
 LICENSE = "MIT & BSD"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=2dbb33d00e1fd31c7041460a81ac0bd2"
 
-RDEPENDS_${PN} += "python-mime python-pprint python-re"
+RDEPENDS_${PN} += "python-greenlet python-mime python-pprint python-re"
 
 SRC_URI = "http://pypi.python.org/packages/source/g/gevent/gevent-${PV}.tar.gz \
            file://python-gevent_1.0.1-setup-py.patch"

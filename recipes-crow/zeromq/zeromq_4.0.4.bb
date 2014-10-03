@@ -14,6 +14,8 @@ S = "${WORKDIR}/zeromq-${PV}"
 #CFLAGS_append += "-O0"
 #CXXFLAGS_append += "-O0"
 
+EXTRA_OECONF += "--host arm-poky-linux-gnueabi --build x86_64-linux"
+
 inherit autotools
 
 do_install_append () {
