@@ -1,0 +1,12 @@
+--- gevent-1.0.1/setup.py	2014-04-30 16:45:07.000000000 +0200
++++ gevent-1.0.1/setup.py
+@@ -51,7 +51,7 @@
+ 
+ define_macros = []
+ libraries = []
+-libev_configure_command = ["/bin/sh", abspath('libev/configure'), '> configure-output.txt']
++libev_configure_command = ["/bin/sh", abspath('libev/configure --host arm-poky-linux-gnueabi --build x86_64-linux'), '> configure-output.txt']
+ ares_configure_command = ["/bin/sh", abspath('c-ares/configure'), 'CONFIG_COMMANDS= CONFIG_FILES= > configure-output.txt']
+ 
+ 
+
