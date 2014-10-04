@@ -23,7 +23,12 @@ RDEPENDS_${PN} = "python-zeromq \
                   python-nose \
                   python-argparse \
                   python-requests \
-                  python-enum"
+                  python-enum \
+                  python-unixadmin \
+                  python-openssl \
+                  python-crypto \
+		  python-netifaces \
+                  python-ntplib"
 
 do_install_append() {
 	rm -rf ${D}${datadir}/share
