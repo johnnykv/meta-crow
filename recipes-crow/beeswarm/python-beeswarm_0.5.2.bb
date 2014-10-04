@@ -14,7 +14,16 @@ inherit setuptools
 
 BBCLASSEXTEND = "native"
 
-RDEPENDS_${PN} = " python-zeromq python-crypt python-gevent python-fs"
+RDEPENDS_${PN} = "python-zeromq \
+		  python-json \
+                  python-crypt \
+                  python-gevent \
+                  python-fs \
+                  python-email \
+                  python-nose \
+                  python-argparse \
+                  python-requests \
+                  python-enum"
 
 do_install_append() {
 	rm -rf ${D}${datadir}/share
