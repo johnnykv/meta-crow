@@ -38,6 +38,7 @@ RDEPENDS_${PN} = " python-core \
             python-netserver \
             python-shell \
             python-multiprocessing \
+            python-ecdsa \
             util-linux \
             zeromq "
 

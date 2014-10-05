@@ -10,9 +10,10 @@ SRCNAME = "paramiko"
 SRC_URI = "http://pypi.python.org/packages/source/p/${SRCNAME}/${SRCNAME}-${PV}.tar.gz"
 
 SRC_URI[md5sum] = "48c274c3f9b1282932567b21f6acf3b5"
+SRC_URI[sha256sum] = "6ed97e2281bb48728692cdc621f6b86a65fdc1d46b178ce250cfec10b977a04c"
 
 S = "${WORKDIR}/${SRCNAME}-${PV}"
 
 inherit setuptools
 
-RDEPENDS_${PN} += "python-pycrypto"
+RDEPENDS_${PN} += "python-crypto"
