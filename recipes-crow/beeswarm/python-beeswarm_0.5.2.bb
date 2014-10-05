@@ -32,7 +32,8 @@ RDEPENDS_${PN} = "python-zeromq \
                   python-ntplib \
                   python-ecdsa \
                   python-cssselect \
-                  python-nose"
+                  python-nose \
+                  python-paramiko"
 
 do_install_append() {
 	rm -rf ${D}${datadir}/share
