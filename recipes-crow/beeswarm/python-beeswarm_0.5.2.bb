@@ -33,7 +33,10 @@ RDEPENDS_${PN} = "python-zeromq \
                   python-ecdsa \
                   python-cssselect \
                   python-nose \
-                  python-paramiko"
+                  python-paramiko \
+                  python-des \
+                  python-sendfile \
+                  python-smtpd"
 
 do_install_append() {
 	rm -rf ${D}${datadir}/share

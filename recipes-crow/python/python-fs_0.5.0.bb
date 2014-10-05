@@ -5,7 +5,7 @@ SECTION = "devel/python"
 LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=29607833435a8c40c0c7622e4e8f99fa"
 
-RDEPENDS_${PN} += "python-mime python-pprint python-re"
+RDEPENDS_${PN} += "python-core python-mime python-pprint python-re python-six"
 
 SRC_URI = "http://pypi.python.org/packages/source/f/fs/fs-${PV}.tar.gz"
 SRC_URI[md5sum] = "0636988bee49f06db2b9bb1f67396ca5"
