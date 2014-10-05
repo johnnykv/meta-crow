@@ -29,7 +29,10 @@ RDEPENDS_${PN} = "python-zeromq \
                   python-crypto \
 		  		  python-netifaces \
 		  		  python-curses \
-                  python-ntplib"
+                  python-ntplib \
+                  python-ecdsa \
+                  python-cssselect \
+                  python-nose"
 
 do_install_append() {
 	rm -rf ${D}${datadir}/share
