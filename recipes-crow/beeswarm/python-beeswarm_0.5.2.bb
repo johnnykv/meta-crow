@@ -33,7 +33,8 @@ RDEPENDS_${PN} = "python-zeromq \
                   python-ecdsa \
                   python-cssselect \
                   python-nose \
-                  python-paramiko"
+                  python-paramiko \
+                  python-telnetsrv"
 
 do_install_append() {
 	rm -rf ${D}${datadir}/share
