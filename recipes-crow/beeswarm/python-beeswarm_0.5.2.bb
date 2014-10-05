@@ -27,7 +27,8 @@ RDEPENDS_${PN} = "python-zeromq \
                   python-unixadmin \
                   python-openssl \
                   python-crypto \
-		  python-netifaces \
+		  		  python-netifaces \
+		  		  python-curses \
                   python-ntplib"
 
 do_install_append() {
