@@ -34,7 +34,14 @@ RDEPENDS_${PN} = "python-zeromq \
                   python-cssselect \
                   python-nose \
                   python-paramiko \
-                  python-telnetsrv"
+                  python-telnetsrv \
+                  python-sqlalchemy \
+                  python-lxml \
+                  python-flask \
+                  python-mock \
+				  python-netifaces \
+                  python-flask-login \
+                  python-flask-wtf"
 
 do_install_append() {
 	rm -rf ${D}${datadir}/share
