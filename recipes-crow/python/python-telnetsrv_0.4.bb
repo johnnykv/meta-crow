@@ -1,9 +1,9 @@
-SUMMARY = "Telnet server using gevent or threading."
+SUMMARY = "Telnet server handler library"
 SECTION = "devel/python"
-LICENSE = "GPLv3+"
+LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM = "file://COPYING.txt;md5=e6a600fd5e1d9cbde2d983680233ad02"
 
-RDEPENDS_${PN} += "python-core python-curses python-netserver python-threading python-paramiko"
+RDEPENDS_${PN} += "python-core python-paramiko python-threading python-netserver"
 
 SRC_URI = "http://pypi.python.org/packages/source/t/telnetsrv/telnetsrv-${PV}.tar.gz"
 SRC_URI[md5sum] = "eb59ce5a765c4f9acb85f60342ae0be9"
