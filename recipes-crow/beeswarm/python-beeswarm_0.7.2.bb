@@ -5,8 +5,8 @@ LIC_FILES_CHKSUM = "file://README.rst;md5=96a464b158cc90d1392b88a339b5d459"
 
 SRC_URI = "http://pypi.python.org/packages/source/B/Beeswarm/Beeswarm-${PV}.tar.gz"
 
-SRC_URI[md5sum] = "ed3b6689a08d54cce7bb41b159bd4fbf"
-SRC_URI[sha256sum] = "c73a0418ddb30039330b319a0c697b22016dc871096dae5e81feb028e373a08b"
+SRC_URI[md5sum] = "9622afe401abb27c272195e05fa0cf38"
+SRC_URI[sha256sum] = "b0a2d6ce11be7e775f72b5b3ab8a770fe11a646bcbe25853e55221d869f63a61"
 
 S = "${WORKDIR}/Beeswarm-${PV}"
 
@@ -27,8 +27,8 @@ RDEPENDS_${PN} = "python-zeromq \
                   python-unixadmin \
                   python-openssl \
                   python-crypto \
-		  		  python-netifaces \
-		  		  python-curses \
+                  python-netifaces \
+                  python-curses \
                   python-ntplib \
                   python-ecdsa \
                   python-cssselect \
@@ -36,15 +36,18 @@ RDEPENDS_${PN} = "python-zeromq \
                   python-paramiko \
                   python-des \
                   python-sendfile \
-                  python-smtpd"
+                  python-smtpd \
                   python-telnetsrv \
                   python-sqlalchemy \
                   python-lxml \
                   python-flask \
                   python-mock \
-				  python-netifaces \
+                  python-netifaces \
                   python-flask-login \
-                  python-flask-wtf"
+                  python-flask-wtf \
+                  python-misc \
+                  python-mailbox \
+                  python-werkzeug "
 
 do_install_append() {
 	rm -rf ${D}${datadir}/share
