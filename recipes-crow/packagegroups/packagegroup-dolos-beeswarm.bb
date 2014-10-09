@@ -11,9 +11,11 @@ inherit packagegroup
 
 PACKAGES = "\
     packagegroup-dolos-beeswarm \
+    ossec \
     "
 
 RDEPENDS_packagegroup-dolos-beeswarm = "\
 packagegroup-core-full-cmdline \
 python-beeswarm \
+ossec \ 
 "
