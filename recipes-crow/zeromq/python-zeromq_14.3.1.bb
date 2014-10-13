@@ -43,10 +43,9 @@ RDEPENDS_${PN} = " python-core \
             zeromq "
 
 FILES_${PN}-dbg += "${libdir}/python2.7/site-packages/zmq/backend/cython/.debug"
-
-inherit setuptools
-
+EXTRA_OECONF += "--host arm-poky-linux-gnueabi --build x86_64-linux"
 do_configure() {
+
 
 # will force pyzmq to compile and embed zmq itself
 export ZMQ_DIR=/blahblah
@@ -56,3 +55,5 @@ export ZMQ_DIR=/blahblah
 do_install_append() {
         rm -rf ${D}${datadir}/share
 }
+
+inherit setuptools
