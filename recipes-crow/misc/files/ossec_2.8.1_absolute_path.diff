@@ -1,0 +1,40 @@
+--- ossec-hids-2.8.1/src/Makeall	2014-09-09 04:03:23.000000000 +0200
++++ ossec-hids-2.8.1/src/Makeall.new	2014-10-16 00:58:48.621867602 +0200
+@@ -63,19 +63,19 @@
+     fi
+ 
+     # Checking for OpenSSLconf.h
+-    if [ -e /usr/include/openssl/opensslconf.h ]; then
++    if [ -e $PKG_CONFIG_SYSROOT_DIR/usr/include/openssl/opensslconf.h ]; then
+         echo "DEXTRA=-DUSE_OPENSSL" >> Config.OS
+         echo "OPENSSLCMD=-lssl -lcrypto" >> Config.OS
+-    elif [ -e /usr/include/openssl/conf.h ]; then
++    elif [ -e $PKG_CONFIG_SYSROOT_DIR/usr/include/openssl/conf.h ]; then
+         echo "DEXTRA=-DUSE_OPENSSL" >> Config.OS
+         echo "OPENSSLCMD=-lssl -lcrypto" >> Config.OS
+     fi    
+ 
+     # Checking for inotify
+     if [ "X$OS" = "XLinux" ]; then
+-        if [ -e /usr/include/sys/inotify.h ]; then
++        if [ -e $PKG_CONFIG_SYSROOT_DIR/usr/include/sys/inotify.h ]; then
+             echo "EEXTRA=-DUSEINOTIFY" >> Config.OS
+-        elif [ -e /usr/include/linux/inotify.h ]; then
++        elif [ -e $PKG_CONFIG_SYSROOT_DIR/usr/include/linux/inotify.h ]; then
+             echo "EEXTRA=-DUSEINOTIFY" >> Config.OS
+         fi
+         LUA_PLAT="posix"
+@@ -83,10 +83,10 @@
+ 
+     # Checking for libmagic
+     if [ "X$SYSCHECK" = "Xyes" ]; then
+-        if [ -e /usr/include/linux/magic.h ]; then
++        if [ -e $PKG_CONFIG_SYSROOT_DIR/usr/include/linux/magic.h ]; then
+             echo "MEXTRA=-DUSE_MAGIC" >> Config.OS
+             echo "MAGICCMD=-lmagic" >> Config.OS
+-        elif [ -e /usr/include/magic.h ]; then
++        elif [ -e $PKG_CONFIG_SYSROOT_DIR/usr/include/magic.h ]; then
+             echo "MEXTRA=-DUSE_MAGIC" >> Config.OS
+             echo "MAGICCMD=-lmagic" >> Config.OS
+         fi
+

@@ -2,12 +2,15 @@ DESCRIPTION = "Open Source Host-based Intrusion Detection System"
 HOMEPAGE = "http://www.ossec.net/"
 LICENSE = "LGPLv3+"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=0d7fd090a120b378bd44a18319085d88"
-
-SRC_URI = "http://www.ossec.net/files/ossec-hids-${PV}.tar.gz"
+PR="r3"
+SRC_URI = "http://www.ossec.net/files/ossec-hids-${PV}.tar.gz \
+file://ossec_2.8.1_absolute_path.diff"
 
 SRC_URI[md5sum] = "0d7fd090a120b378bd44a18319085d88"
 
 S = "${WORKDIR}/ossec-hids-${PV}"
+
+DEPENDS = "openssl-native"
 
 inherit useradd
 USERADD_PACKAGES = "${PN}"
@@ -16,11 +19,10 @@ USERADD_PARAM_${PN} = "-u 1300 -g ossec -d /var/ossec -r -s /sbin/nologin ossec"
 
 #/work/armv5te-poky-linux-gnueabi/ossec/2.8.1-r0/packages-split/ossec/var/ossec/bin/.debug/ossec-logcollector
 FILES_${PN}-dbg =+ "/var/ossec/bin/.debug"
-#INSANE_SKIP_${PN} = "dev-so"
 
 do_install() {
 cd src
-oe_runmake all 
+oe_runmake all
 
 mkdir ${D}/var
 mkdir -m 0700 ${D}/var/ossec
