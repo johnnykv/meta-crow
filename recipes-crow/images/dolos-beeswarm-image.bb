@@ -1,5 +1,5 @@
 DESCRIPTION = "Dolos Beeswarm image"
-PR = "r1"
+PR = "r2"
 
 IMAGE_FEATURES += "ssh-server-openssh read-only-rootfs"
 
