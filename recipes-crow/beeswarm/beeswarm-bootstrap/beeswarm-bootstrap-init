@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+
+case "$1" in
+        start)
+                echo -n "Bootstrapping beeswarm: "
+                mkdir /tmp/beeswarm
+                mkdir /tmp/beeswarm/server
+                mkdir /tmp/beeswarm/drone
+                python -c 'from beeswarm.shared.misc.local_bootstrapper import bootstrap; bootstrap("/tmp/beeswarm/server", "/tmp/beeswarm/drone")'
+                echo "."
+                ;;
+        stop)
+                echo -n "Removing bootstrapped beeswarm files."
+                rm -rf /tmp/beeswarm
+                echo "."
+                ;;
+        restart | force-reload)
+                $0 stop
+                sleep 2
+                $0 start
+                if [ "$?" != "0" ]; then
+                        exit 1
+                fi
+                ;;
+        *)
+                echo "Usage: /etc/init.d/beeswarm-bootstrap {start|stop|restart|force-reload}"
+                exit 1
+esac
+
+exit 0

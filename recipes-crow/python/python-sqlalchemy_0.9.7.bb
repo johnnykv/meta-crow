@@ -3,7 +3,7 @@ application developers the full power and flexibility of SQL"
 HOMEPAGE = "http://www.sqlalchemy.org/"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=6c90a3830628085e8ba945f94d622cb2"
-RDEPENDS_${PN} += "python-numbers"
+RDEPENDS_${PN} += "python-numbers python-sqlite3"
 
 SRCNAME = "SQLAlchemy"
 SRC_URI = "https://pypi.python.org/packages/source/S/${SRCNAME}/${SRCNAME}-${PV}.tar.gz"
