@@ -9,7 +9,10 @@ SRC_URI[md5sum] = "639fc3256fe6352b4f71f2ff42e1a293"
 
 S = "${WORKDIR}/Beeswarm-${PV}"
 
-inherit setuptools
+inherit setuptools useradd
+USERADD_PACKAGES = "${PN}"
+GROUPADD_PARAM_${PN} = "-g 1301 beeswarm"
+USERADD_PARAM_${PN} = "-u 1301 -g beeswarm -d /home/beeswarm -r -s /sbin/nologin beeswarm"
 
 BBCLASSEXTEND = "native"
 
@@ -46,7 +49,8 @@ RDEPENDS_${PN} = "python-zeromq \
                   python-flask-wtf \
                   python-misc \
                   python-mailbox \
-                  python-werkzeug "
+                  python-werkzeug \
+                  python-jinja2 "
 
 do_install_append() {
 	rm -rf ${D}${datadir}/share
