@@ -1,13 +1,14 @@
 #!/bin/sh
 
-SERVER_WORK_PATH = "/tmp/beeswarm/server"
-SERVER_PID_FILE = "/var/run/beeswarm-server.pid"
+SERVER_WORK_PATH="/tmp/beeswarm/server"
+SERVER_PID_FILE="/var/run/beeswarm-server.pid"
 
 case "$1" in
 	start)
                 # TODO: Test if we have sqlite db...
 		echo -n "Starting Beeswarm server instance: "
-			start-stop-daemon -m --pidfile $SERVER_PID_FILE -c beeswarm:beeswarm -S -x beeswarm -- --workdir $SERVER_WORK_PATH --logfile $SERVER_WORK_PATH/beeswarm.log 
+                cd SERVER_WORK_PATH
+		start-stop-daemon -m --pidfile $SERVER_PID_FILE -c beeswarm:beeswarm -S -x beeswarm -- -v
 		echo "."
 		;;
 	stop)

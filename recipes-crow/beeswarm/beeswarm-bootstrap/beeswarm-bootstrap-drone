@@ -1,0 +1,31 @@
+#!/bin/sh
+
+DRONE_WORK_PATH="/tmp/beeswarm/drone"
+DRONE_PID_FILE="/var/run/beeswarm-drone.pid"
+
+case "$1" in
+	start)
+		echo -n "Starting Beeswarm drone instance: "
+                cd $DRONE_WORK_PATH
+	        start-stop-daemon -m --pidfile $DRONE_PID_FILE -c beeswarm:beeswarm -S -x beeswarm -- -v 
+		echo "."
+		;;
+	stop)
+		echo -n "Stopping Beeswarm instance"
+		start-stop-daemon -K --pidfile $DRONE_PID_FILE -x beeswarm
+		echo "."
+		;;
+	restart | force-reload)
+		$0 stop
+		sleep 2
+		$0 start
+		if [ "$?" != "0" ]; then
+			exit 1
+		fi
+		;;
+	*)
+		echo "Usage: /etc/init.d/beeswarm-bootstraped-drone {start|stop|restart|force-reload}"
+		exit 1 
+esac
+
+exit 0
