@@ -5,14 +5,14 @@ LIC_FILES_CHKSUM = "file://README.rst;md5=96a464b158cc90d1392b88a339b5d459"
 
 SRC_URI = "http://pypi.python.org/packages/source/B/Beeswarm/Beeswarm-${PV}.tar.gz"
 
-SRC_URI[md5sum] = "639fc3256fe6352b4f71f2ff42e1a293"
+SRC_URI[md5sum] = "d294e5e7a6e0b73dfc48d4b39253a058"
 
 S = "${WORKDIR}/Beeswarm-${PV}"
 
 inherit setuptools useradd
 USERADD_PACKAGES = "${PN}"
-GROUPADD_PARAM_${PN} = "-g 1301 beeswarm"
-USERADD_PARAM_${PN} = "-u 1301 -g beeswarm -d /home/beeswarm -r -s /sbin/nologin beeswarm"
+GROUPADD_PARAM_${PN} = "beeswarm"
+USERADD_PARAM_${PN} = "-g beeswarm -d /home/beeswarm -r -s /sbin/nologin beeswarm"
 
 BBCLASSEXTEND = "native"
 
