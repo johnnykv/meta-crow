@@ -1,0 +1,9 @@
+--- ossec-hids-2.8.1/src/headers/defs.h	2014-09-09 04:03:23.000000000 +0200
++++ ossec-hids-2.8.1/src/headers/defs.h_new	2014-10-23 21:10:48.000000000 +0200
+@@ -98,7 +98,7 @@
+ #endif
+ 
+ #ifndef DEFAULTDIR		
+-	#define DEFAULTDIR	"/var/ossec"
++	#define DEFAULTDIR	"/tmp/ossec"
+ #endif

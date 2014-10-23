@@ -4,7 +4,8 @@ LICENSE = "LGPLv3+"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=0d7fd090a120b378bd44a18319085d88"
 PR="r3"
 SRC_URI = "http://www.ossec.net/files/ossec-hids-${PV}.tar.gz \
-file://ossec_2.8.1_absolute_path.diff"
+file://ossec_2.8.1_absolute_path.diff \
+file://ossec_2.8.1_tmp_defaultdit.diff"
 
 SRC_URI[md5sum] = "0d7fd090a120b378bd44a18319085d88"
 
