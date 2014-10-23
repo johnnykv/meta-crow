@@ -7,8 +7,7 @@ case "$1" in
 	start)
                 # TODO: Test if we have sqlite db...
 		echo -n "Starting Beeswarm server instance: "
-                cd SERVER_WORK_PATH
-		start-stop-daemon -m --pidfile $SERVER_PID_FILE -c beeswarm:beeswarm -S -x beeswarm -- -v --no_webui --max_sessions 0
+		start-stop-daemon -m --pidfile $SERVER_PID_FILE -c beeswarm:beeswarm -S -x beeswarm -- -v --no_webui --max_sessions 0 --workdir $SERVER_WORK_PATH
 		echo "."
 		;;
 	stop)
