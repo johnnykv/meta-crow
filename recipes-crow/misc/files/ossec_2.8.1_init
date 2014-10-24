@@ -1,0 +1,29 @@
+#!/bin/sh
+
+case "$1" in
+        start)
+                if [ ! -d "$DIRECTORY" ]; then
+                  echo -n "Copying ossec files to volatile lication. "
+                  cp -rp /var/ossec /tmp/ossec
+                  echo "."
+                fi
+                ;;
+        stop)
+                echo -n "Removing bootstrapped beeswarm files."
+                rm -rf /tmp/ossec
+                echo "."
+                ;;
+        restart | force-reload)
+                $0 stop
+                sleep 2
+                $0 start
+                if [ "$?" != "0" ]; then
+                        exit 1
+                fi
+                ;;
+        *)
+                echo "Usage: /etc/init.d/ossec_make_volatile {start|stop|restart|force-reload}"
+                exit 1
+esac
+
+exit 0
