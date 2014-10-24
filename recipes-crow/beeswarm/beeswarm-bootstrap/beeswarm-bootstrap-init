@@ -7,6 +7,7 @@ case "$1" in
                 mkdir /tmp/beeswarm/server
                 mkdir /tmp/beeswarm/drone
                 python -c 'from beeswarm.shared.misc.local_bootstrapper import bootstrap; bootstrap("/tmp/beeswarm/server", "/tmp/beeswarm/drone")'
+                chown -R beeswarm:beeswarm /tmp/beeswarm/
                 echo "."
                 ;;
         stop)

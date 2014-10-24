@@ -7,7 +7,7 @@ case "$1" in
 	start)
 		echo -n "Starting Beeswarm drone instance: "
                 cd $DRONE_WORK_PATH
-	        start-stop-daemon -m --pidfile $DRONE_PID_FILE -c beeswarm:beeswarm -S -x beeswarm -- -v --workdir $DRONE_WORK_PATH 
+	        start-stop-daemon -b -m --pidfile $DRONE_PID_FILE -c beeswarm:beeswarm -S -x beeswarm -- -v --workdir $DRONE_WORK_PATH 
 		echo "."
 		;;
 	stop)
