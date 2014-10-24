@@ -1,12 +1,29 @@
 #!/bin/sh
 
+OSSEC_DIR="/var/ossec/"
+OSSEC_VIOLATILE_DIR="/tmp/ossec"
+INPUT_OSSEC_CFG="/media/card/ossec.conf"
+INPUT_KEYS="/media/card/client.keys"
+
 case "$1" in
         start)
-                if [ ! -d "$DIRECTORY" ]; then
-                  echo -n "Copying ossec files to volatile lication. "
-                  cp -rp /var/ossec /tmp/ossec
+                if [ ! -d "$OSSEC_VIOLATILE_DIR" ]; then
+                  echo -n "Copying ossec files to volatile location. "
+                  cp -rp $OSSEC_DIR $OSSEC_VIOLATILE_DIR
                   echo "."
                 fi
+
+                if [ -f "$INPUT_OSSEC_CFG" ]; then
+                  cp  $INPUT_OSSEC_CFG $OSSEC_VIOLATILE_DIR/etc/ossec.conf
+                  echo "."
+                fi
+
+
+                if [ -f "$INPUT_KEYS" ]; then
+                  cp  $INPUT_KEYS $OSSEC_VIOLATILE_DIR/etc/client.keys
+                  echo "."
+                fi
+
                 ;;
         stop)
                 echo -n "Removing bootstrapped beeswarm files."

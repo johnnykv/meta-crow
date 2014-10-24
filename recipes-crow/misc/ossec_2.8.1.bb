@@ -29,6 +29,7 @@ FILES_${PN}-dbg =+ "/var/ossec/bin/.debug"
 
 do_install() {
 cd src
+oe_runmake setagent 
 oe_runmake all
 
 mkdir ${D}/var
