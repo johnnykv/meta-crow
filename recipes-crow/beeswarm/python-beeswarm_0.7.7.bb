@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://README.rst;md5=96a464b158cc90d1392b88a339b5d459"
 
 SRC_URI = "http://pypi.python.org/packages/source/B/Beeswarm/Beeswarm-${PV}.tar.gz"
 
-SRC_URI[md5sum] = "d294e5e7a6e0b73dfc48d4b39253a058"
+SRC_URI[md5sum] = "04ba33e04e384dd5c76969e303223f49"
 
 S = "${WORKDIR}/Beeswarm-${PV}"
 
