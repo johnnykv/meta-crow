@@ -15,3 +15,16 @@ IP_NETMASK=$(awk -F"=" '/^IP_NETMASK/{gsub(/ /, "", $0);print $2}' $CONFIG_FILE)
 # TODO: put OSSEC_SERVER in <client> config in OSSEC config file
 # TODO: base64 decode AGENT_KEY and put in client.keys
 # TODO: Setup IP mode
+
+AGENT_CONF="
+<ossec_config>\n
+  <client>\n
+    <server-ip>$OSSEC_SERVER</server-ip>\n
+  </client>\n
+  <localfile>\n
+    <log_format>syslog</log_format>\n
+    <location>/var/log/syslog</location>\n
+  </localfile>\n
+</ossec_config>\n
+"
+echo $AGENT_CONF
