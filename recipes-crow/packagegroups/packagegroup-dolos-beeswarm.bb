@@ -11,7 +11,6 @@ inherit packagegroup
 
 PACKAGES = "\
     packagegroup-dolos-beeswarm \
-    ossec \
     "
 
 RDEPENDS_packagegroup-dolos-beeswarm = "\
