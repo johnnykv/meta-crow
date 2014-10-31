@@ -44,6 +44,7 @@ RDEPENDS_${PN} = " python-core \
 
 FILES_${PN}-dbg += "${libdir}/python2.7/site-packages/zmq/backend/cython/.debug"
 EXTRA_OECONF += "--host arm-poky-linux-gnueabi --build x86_64-linux"
+EXTRA_OEMAKE = "--zmq=bundled"
 do_configure() {
 
 
