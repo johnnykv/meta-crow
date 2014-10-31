@@ -1,7 +1,9 @@
 #!/bin/bash
 
+MEDIA_PATH="/mnt"
+
 ORIGINAL_CONFIG_FILE="/etc/dolos.cfg_original"
-CONFIG_FILE="/media/card/dolos.cfg"
+CONFIG_FILE=$MEDIA_PATH/card/dolos.cfg
 OSSEC_AGENT_CONFIG="/tmp/ossec/ossec.conf"
 
 OSSEC_SERVER=$(awk -F"=" '/^OSSEC_SERVER/{gsub(/ /, "", $0);print $2}' $CONFIG_FILE)
@@ -31,8 +33,8 @@ case "$1" in
                 chown ossec:ossec $OSSEC_AGENT_CONFIG
                 chmod 755 $OSSEC_AGENT_CONFIG
 
-                if [ !-f /media/card/dolos.cfg_original  ]; then
-                  cp $ORIGINAL_CONFIG_FILE /media/card/dolos.cfg_original
+                if [ !-f $MEDIA_PATH/dolos.cfg_original  ]; then
+                  cp $ORIGINAL_CONFIG_FILE $MEDIA_PATH/dolos.cfg_original
                 fi
                 yes | /tmp/ossec/bin/manage_agents -i $AGENT_KEY
                 /tmp/ossec/bin/ossec-control start
