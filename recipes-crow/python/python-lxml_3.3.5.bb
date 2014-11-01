@@ -4,7 +4,7 @@ SECTION = "devel/python"
 LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://LICENSES.txt;md5=f9f1dc24f720c143c2240df41fe5073b"
 
-PR = "r0"
+PR = "r3"
 
 SRCNAME = "lxml"
 SRC_URI = "http://pypi.python.org/packages/source/l/${SRCNAME}/${SRCNAME}-${PV}.tar.gz"
@@ -16,10 +16,9 @@ S = "${WORKDIR}/${SRCNAME}-${PV}"
 
 EXTRA_OECONF += "--host arm-poky-linux-gnueabi --build x86_64-linux"
 
-inherit setuptools
-
-
 DEPENDS = "libxml2 libxslt"
+
+inherit setuptools
 
 # DEPENDS_default: python-pip
 

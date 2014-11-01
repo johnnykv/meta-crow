@@ -2,7 +2,7 @@ DESCRIPTION = "Open Source Host-based Intrusion Detection System"
 HOMEPAGE = "http://www.ossec.net/"
 LICENSE = "LGPLv3+"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=0d7fd090a120b378bd44a18319085d88"
-PR="r3"
+PR="r4"
 SRC_URI = "http://www.ossec.net/files/ossec-hids-${PV}.tar.gz \
 file://ossec_2.8.1_absolute_path.diff \
 file://ossec_2.8.1_tmp_defaultdit.diff \
@@ -24,7 +24,6 @@ USERADD_PACKAGES = "${PN}"
 GROUPADD_PARAM_${PN} = "-g 1300 ossec"
 USERADD_PARAM_${PN} = "-u 1300 -g ossec -d /var/ossec -r -s /sbin/nologin ossec"
 
-#/work/armv5te-poky-linux-gnueabi/ossec/2.8.1-r0/packages-split/ossec/var/ossec/bin/.debug/ossec-logcollector
 FILES_${PN}-dbg =+ "/var/ossec/bin/.debug"
 
 do_install() {
@@ -65,9 +64,6 @@ chmod 664 ${DIR}/logs/ossec.log
 chown -R ${NEW_USER}:${NEW_GROUP} ${DIR}/queue/diff
 chmod -R 750 ${DIR}/queue/diff
 #chmod 740 ${DIR}/queue/diff/*
-
-
-
 
 # For the etc dir
 chmod 550 ${DIR}/etc
