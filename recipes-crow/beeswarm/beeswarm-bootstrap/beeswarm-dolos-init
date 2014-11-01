@@ -12,6 +12,7 @@ IP_MODE=$(awk -F"=" '/^IP_MODE/{gsub(/ /, "", $0);print $2}' $CONFIG_FILE)
 IP_ADDRESS=$(awk -F"=" '/^IP_ADDRESS/{gsub(/ /, "", $0);print $2}' $CONFIG_FILE)
 IP_BROADCAST=$(awk -F"=" '/^IP_BROADCAST/{gsub(/ /, "", $0);print $2}' $CONFIG_FILE)
 IP_NETMASK=$(awk -F"=" '/^IP_NETMASK/{gsub(/ /, "", $0);print $2}' $CONFIG_FILE)
+IP_GATEWAY=$(awk -F"=" '/^IP_GATEWAY/{gsub(/ /, "", $0);print $2}' $CONFIG_FILE)
 
 AGENT_CONF="
 <ossec_config>\n
@@ -24,22 +25,35 @@ AGENT_CONF="
   </localfile>\n
 </ossec_config>\n"
 
+IP_STATIC_CONF="
+iface eth0 inet static\n
+  address $IP_ADDRESS\n
+  netmask $IP_NETMASK\n
+  gateway $IP_GATEWAY\n
+  broadcast $IP_BROADCAST\n"
+
 # lame work around
 insmod /lib/modules/3.14.19-yocto-standard/kernel/fs/nls/nls_cp437.ko
 insmod /lib/modules/3.14.19-yocto-standard/kernel/fs/nls/nls_iso8859-1.ko
 insmod /lib/modules/3.14.19-yocto-standard/kernel/fs/nls/nls_utf8.ko
-mount /dev//dev/mmcblk0p1 /mnt
+mount /dev/mmcblk0p1 /mnt
 
 
 case "$1" in
         start)
                 echo -n "Parsing Dolos config and starting OSSEC: "
-                echo $AGENT_CONF > $OSSEC_AGENT_CONFIG
+                if [ "$IP_MODE" == "STATIC" ]
+                  then
+                    echo -e $IP_STATIC_CONF > /tmp/interfaces
+                    ifup -i /tmp/interfaces eth0
+                fi
+                echo -e $AGENT_CONF > $OSSEC_AGENT_CONFIG
                 chown ossec:ossec $OSSEC_AGENT_CONFIG
                 chmod 755 $OSSEC_AGENT_CONFIG
 
-                if [ !-f $MEDIA_PATH/dolos.cfg_original  ]; then
-                  cp $ORIGINAL_CONFIG_FILE $MEDIA_PATH/dolos.cfg_original
+                if [ !-f $MEDIA_PATH/dolos.cfg_original  ]
+                  then
+                   cp $ORIGINAL_CONFIG_FILE $MEDIA_PATH/dolos.cfg_original
                 fi
                 yes | /tmp/ossec/bin/manage_agents -i $AGENT_KEY
                 /tmp/ossec/bin/ossec-control start
