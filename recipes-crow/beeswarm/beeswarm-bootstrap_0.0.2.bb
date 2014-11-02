@@ -18,8 +18,8 @@ INITSCRIPT_PARAMS_${PN}-server = "defaults 20 10"
 INITSCRIPT_NAME_${PN}-drone   = "beeswarm-bootstrap-drone"
 INITSCRIPT_PARAMS_${PN}-drone = "defaults 25 9"
 
-INITSCRIPT_NAME_${PN}-dolow   = "beeswarm-dolos-init"
-INITSCRIPT_PARAMS_${PN}-dolow = "defaults 26 9"
+INITSCRIPT_NAME_${PN}-dolos   = "beeswarm-dolos-init"
+INITSCRIPT_PARAMS_${PN}-dolos = "defaults 26 9"
 
 inherit update-rc.d
 
