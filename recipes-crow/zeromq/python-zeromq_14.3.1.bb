@@ -49,7 +49,7 @@ do_configure() {
 
 
 # will force pyzmq to compile and embed zmq itself
-export ZMQ_DIR=/blahblah
+export ZMQ=bundled
 
 }
 
@@ -58,3 +58,4 @@ do_install_append() {
 }
 
 inherit setuptools
+
