@@ -5,6 +5,7 @@ MEDIA_PATH="/mnt"
 ORIGINAL_CONFIG_FILE="/etc/dolos.cfg_original"
 CONFIG_FILE=$MEDIA_PATH/dolos.cfg
 OSSEC_AGENT_CONFIG="/tmp/ossec/etc/ossec.conf"
+OSSEC_AGENT_KEY="/tmp/ossec/etc/client.keys"
 
 OSSEC_SERVER=$(awk -F"=" '/^OSSEC_SERVER/{gsub(/ /, "", $0);print $2}' $CONFIG_FILE)
 AGENT_KEY=$(awk -F"=" '/^AGENT_KEY/{gsub(/ /, "", $0);print $2}' $CONFIG_FILE)
@@ -33,7 +34,7 @@ iface eth0 inet static\n
   broadcast $IP_BROADCAST\n"
 
 IP_DHCP_CONF="
-iface eth0 inet dhcp\n
+iface eth0 inet dhcp\n"
 
 
 
@@ -51,12 +52,17 @@ case "$1" in
                   then
                     echo -e $IP_STATIC_CONF > /tmp/interfaces
                   else
-                    echo -e IP_DHCP_CONF > /tmp/interfaces
+                    echo -e $IP_DHCP_CONF > /tmp/interfaces
                 fi
                 ifup -i /tmp/interfaces eth0
                 echo -e $AGENT_CONF > $OSSEC_AGENT_CONFIG
                 chown ossec:ossec $OSSEC_AGENT_CONFIG
                 chmod 755 $OSSEC_AGENT_CONFIG
+
+                echo -e $AGENT_KEY > $OSSEC_AGENT_KEY                           
+                chown ossec:ossec $OSSEC_AGENT_KEY                              
+                chmod 750 $OSSEC_AGENT_KEY  
+
 
                 if [ ! -f $MEDIA_PATH/dolos.cfg_original  ]
                   then
