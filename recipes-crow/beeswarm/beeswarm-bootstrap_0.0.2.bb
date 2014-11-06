@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d
 RDEPENDS_${PN} += "${PN}-drone ${PN}-server ${PN}-dolos python-core python-beeswarm"
 PACKAGES = "${PN} ${PN}-server ${PN}-drone ${PN}-dolos"
 
-INITSCRIPT_PACKAGES                 = "${PN}-server ${PN}-drone ${PN}"
+INITSCRIPT_PACKAGES                 = "${PN}-server ${PN}-drone ${PN}-dolos ${PN}"
 INITSCRIPT_NAME_${PN}               = "beeswarm-bootstrap-init"
 INITSCRIPT_PARAMS_${PN}             = "defaults 10 20"
 
