@@ -5,5 +5,5 @@ usbdevfs             /proc/bus/usb        usbdevfs   noauto                0  0
 tmpfs                /run                 tmpfs      mode=0755,nodev,nosuid,strictatime 0  0
 tmpfs                /var/volatile        tmpfs      defaults              0  0
 
-/dev/mmcblk0p1       /mnt                 auto       defaults,sync,noauto  0  0
+/dev/mmcblk0p1       /mnt                 auto       defaults,sync         0  0
 
