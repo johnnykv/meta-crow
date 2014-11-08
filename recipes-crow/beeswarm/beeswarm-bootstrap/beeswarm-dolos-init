@@ -52,7 +52,7 @@ case "$1" in
                   else
                     echo -e $IP_DHCP_CONF > /tmp/interfaces
                 fi
-                ifup -i /tmp/interfaces eth0
+                ifup -f -i /tmp/interfaces eth0
                 echo -e $AGENT_CONF > $OSSEC_AGENT_CONFIG
                 chown ossec:ossec $OSSEC_AGENT_CONFIG
                 chmod 755 $OSSEC_AGENT_CONFIG
