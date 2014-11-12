@@ -4,8 +4,8 @@ DEPENDS = "openssl libpam"
 
 SRC_URI = "\
 	http://mmonit.com/monit/dist/monit-${PV}.tar.gz \
-	file://enable-etc-monit.d-include.patch \
 	file://monit-init \
+        file://monitrc.patch \
 	"
 
 SRC_URI[md5sum] = "5b5b5cc7939b975bbbef73bd6426750a"
