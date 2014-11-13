@@ -1,0 +1,5 @@
+check process beeswarm-drone with pidfile /var/run/beeswarm-drone.pid
+ start program = "/etc/init.d/beeswarm-bootstrap-drone start" with timeout 60 seconds
+ stop program  = "/etc/init.d/beeswarm-bootstrap-drone stop"
+ if cpu > 60% for 2 cycles then alert
+ if cpu > 80% for 15 cycles then restart

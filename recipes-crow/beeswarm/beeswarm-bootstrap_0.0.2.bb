@@ -1,6 +1,12 @@
 SUMMARY = "Beeswarm localhost bootstrapper"
 
-SRC_URI = "file://beeswarm-bootstrap-init file://beeswarm-bootstrap-server file://beeswarm-bootstrap-drone file://beeswarm-dolos-init file://dolos.cfg_original"
+SRC_URI = "file://beeswarm-bootstrap-init \
+           file://beeswarm-bootstrap-server \
+           file://beeswarm-bootstrap-drone \
+           file://beeswarm-dolos-init \ 
+           file://dolos.cfg_original \
+           file://monit-beeswarm-server \
+           file://monit-beeswarm-drone"
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690"
@@ -24,8 +30,8 @@ INITSCRIPT_PARAMS_${PN}-dolos = "defaults 26 9"
 inherit update-rc.d
 
 FILES_${PN} = "${sysconfdir}/init.d/beeswarm-bootstrap-init"
-FILES_${PN}-server = "${sysconfdir}/init.d/beeswarm-bootstrap-server"
-FILES_${PN}-drone = "${sysconfdir}/init.d/beeswarm-bootstrap-drone"
+FILES_${PN}-server = "${sysconfdir}/init.d/beeswarm-bootstrap-server ${sysconfdir}/monit.d/monit-beeswarm-server"
+FILES_${PN}-drone = "${sysconfdir}/init.d/beeswarm-bootstrap-drone CONFFILES_${PN}-drone += ${sysconfdir}/monit.d/monit-beeswarm-drone"
 FILES_${PN}-dolos = "${sysconfdir}/init.d/beeswarm-dolos-init ${sysconfdir}/dolos.cfg_original"
 
 do_install_append () {
@@ -36,7 +42,7 @@ do_install_append () {
         install -m 0755 ${WORKDIR}/beeswarm-bootstrap-drone ${D}${sysconfdir}/init.d/beeswarm-bootstrap-drone
         install -m 0755 ${WORKDIR}/beeswarm-dolos-init ${D}${sysconfdir}/init.d/beeswarm-dolos-init
         install -m 700 -d ${D}${sysconfdir}/monit.d/
-        install -m 0755 ${WORKDIR}/monit-beeswarm ${D}${sysconfdir}/monit.d/monit-beeswarm 
-
+        install -m 0755 ${WORKDIR}/monit-beeswarm-drone ${D}${sysconfdir}/monit.d/monit-beeswarm-drone
+        install -m 0755 ${WORKDIR}/monit-beeswarm-server ${D}${sysconfdir}/monit.d/monit-beeswarm-server 
 }
 
