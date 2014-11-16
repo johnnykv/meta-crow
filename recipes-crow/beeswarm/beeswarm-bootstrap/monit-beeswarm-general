@@ -1,0 +1,8 @@
+check system localhost
+if memory usage > 95% for 2 cycles then exec "/sbin/reboot" 
+if cpu usage (user) > 80% for 3 cycles then exec "/sbin/reboot"
+if cpu usage (system) > 80% for 3 cycles then exec "/sbin/reboot"
+
+check filesystem rootfs with path /tmp
+if space usage > 95% then exec "/sbin/reboot"
+
