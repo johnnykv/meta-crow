@@ -1,0 +1,17 @@
+<decoder name="beeswarm">
+  <program_name>beeswarm</program_name>
+</decoder>
+
+<decoder name="dolos-connect">
+  <parent>beeswarm</parent>
+  <prematch>Accepted \S+ session on port</prematch>
+  <regex>Accepted (\S+) session on port (\S+) from (\S+):(\S+)</regex>
+  <order>protocol, dstport, srcip, srcport</order>
+</decoder>
+
+<decoder name="dolos-login">
+ <parent>beeswarm</parent>
+ <prematch>^\S+ authentication attempt from</prematch>
+ <regex>(\S+) authentication attempt from (\S+):(\S+)</regex>
+ <order>protocol, srcip, srcport</order>
+</decoder>

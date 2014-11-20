@@ -2,7 +2,8 @@
 
 MEDIA_PATH="/mnt"
 
-ORIGINAL_CONFIG_FILE="/etc/dolos.cfg_original"
+ORIGINAL_CONFIG_FILE="/etc/dolos_config/dolos.cfg_original"
+OSSEC_SERVER_RULES_DIR="/etc/dolos_config/ossec_rules"
 CONFIG_FILE=$MEDIA_PATH/dolos.cfg
 OSSEC_AGENT_CONFIG="/tmp/ossec/etc/ossec.conf"
 OSSEC_AGENT_KEY="/tmp/ossec/etc/client.keys"
@@ -61,6 +62,8 @@ case "$1" in
                 chown ossec:ossec $OSSEC_AGENT_KEY                              
                 chmod 750 $OSSEC_AGENT_KEY  
 
+                mkdir -p  "$MEDIA_PATH/ossec_rules"
+                cp -rf $OSSEC_SERVER_RULES_DIR/* $MEDIA_PATH/ossec_rules
 
                 if [ ! -f $MEDIA_PATH/dolos.cfg_original  ]
                   then

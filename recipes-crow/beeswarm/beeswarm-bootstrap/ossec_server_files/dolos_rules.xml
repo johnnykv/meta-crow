@@ -1,0 +1,13 @@
+<group name="syslog, dolos,">
+  <rule id="48201" level="12">
+    <decoded_as>beeswarm</decoded_as>
+    <match>session on port</match>
+    <description>Someone tried to connect to a honeypot</description>
+  </rule>
+
+  <rule id="48202" level="14">
+    <decoded_as>beeswarm</decoded_as>
+    <match>authentication attempt from</match>
+    <description>A malicious entity tried to login to a honeypot</description>
+  </rule>
+</group>
