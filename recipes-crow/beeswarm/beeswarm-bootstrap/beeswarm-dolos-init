@@ -42,6 +42,9 @@ RESOLV_CONF="
 nameserver $NAMESERVER"
 
 IP_DHCP_CONF="
+auto lo\
+iface lo inet loopback \n
+auto eth0\n
 iface eth0 inet dhcp\n"
 
 # lame work around
