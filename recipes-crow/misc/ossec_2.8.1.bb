@@ -5,7 +5,8 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=0d7fd090a120b378bd44a18319085d88"
 PR="r4"
 SRC_URI = "http://www.ossec.net/files/ossec-hids-${PV}.tar.gz \
 file://ossec_2.8.1_absolute_path.diff \
-file://ossec_2.8.1_tmp_defaultdit.diff"
+file://ossec_2.8.1_tmp_defaultdit.diff \
+file://ossec_2.8.1_init"
 
 SRC_URI[md5sum] = "0d7fd090a120b378bd44a18319085d88"
 
@@ -13,7 +14,11 @@ S = "${WORKDIR}/ossec-hids-${PV}"
 
 DEPENDS = "openssl-native"
 
-inherit useradd
+INITSCRIPT_PACKAGES                 = "${PN}"
+INITSCRIPT_NAME_${PN}               = "ossec-volatile-init"
+INITSCRIPT_PARAMS_${PN}             = "defaults 10 20"
+
+inherit useradd update-rc.d
 
 USERADD_PACKAGES = "${PN}"
 GROUPADD_PARAM_${PN} = "-g 1300 ossec"
@@ -99,6 +104,7 @@ cp -pr os_auth/agent-auth ${DIR}/bin/
 cp -pr logcollector/ossec-logcollector ${DIR}/bin/
 cp -pr syscheckd/ossec-syscheckd ${DIR}/bin/
 cp -pr os_execd/ossec-execd ${DIR}/bin/
+cp -pr ./init/ossec-client.sh ${DIR}/bin/ossec-control
 cp -pr addagent/manage_agents ${DIR}/bin/
 cp -pr ../contrib/util.sh ${DIR}/bin/
 cp -pr external/lua/src/ossec-lua ${DIR}/bin/
