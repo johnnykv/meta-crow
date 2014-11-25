@@ -14,7 +14,7 @@ SRC_URI = "file://beeswarm-bootstrap-init \
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=4d92cd373abda3937c2bc47fbc49d690"
 PR="2"
-RDEPENDS_${PN} += "monit ntp ${PN}-drone ${PN}-server ${PN}-dolos python-core python-beeswarm"
+RDEPENDS_${PN} += "monit ntpdate ${PN}-drone ${PN}-server ${PN}-dolos python-core python-beeswarm"
 PACKAGES = "${PN} ${PN}-server ${PN}-drone ${PN}-dolos"
 
 INITSCRIPT_PACKAGES                 = "${PN}-server ${PN}-drone ${PN}-dolos ${PN}"
