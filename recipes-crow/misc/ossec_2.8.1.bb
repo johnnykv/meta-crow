@@ -6,7 +6,7 @@ PR="r4"
 SRC_URI = "http://www.ossec.net/files/ossec-hids-${PV}.tar.gz \
 file://ossec_2.8.1_absolute_path.diff \
 file://ossec_2.8.1_tmp_defaultdit.diff \
-file://ossec_2.8.1_init"
+file://ossec-volatile-init"
 
 SRC_URI[md5sum] = "0d7fd090a120b378bd44a18319085d88"
 
@@ -14,17 +14,18 @@ S = "${WORKDIR}/ossec-hids-${PV}"
 
 DEPENDS = "openssl-native"
 
-INITSCRIPT_PACKAGES                 = "${PN}"
-INITSCRIPT_NAME_${PN}               = "ossec-volatile-init"
-INITSCRIPT_PARAMS_${PN}             = "defaults 10 20"
-
-inherit useradd update-rc.d
-
 USERADD_PACKAGES = "${PN}"
 GROUPADD_PARAM_${PN} = "-g 1300 ossec"
 USERADD_PARAM_${PN} = "-u 1300 -g ossec -d /var/ossec -r -s /sbin/nologin ossec"
 
+INITSCRIPT_PACKAGES = "${PN}"
+INITSCRIPT_NAME_${PN} = "ossec-volatile-init"
+INITSCRIPT_PARAMS_${PN} = "defaults 19 10"
+
 FILES_${PN}-dbg =+ "/var/ossec/bin/.debug"
+FILES_${PN} =+ " ${sysconfdir}/init.d/ossec-volatile-init"
+
+inherit useradd update-rc.d
 
 do_install() {
 cd src
@@ -131,7 +132,7 @@ chown root:${NEW_GROUP} ${DIR}/etc/ossec.conf
 chmod 440 ${DIR}/etc/ossec.conf
 
 install -d ${D}${sysconfdir}/init.d
-install -m 0755 ${WORKDIR}/ossec_2.8.1_init ${D}${sysconfdir}/init.d/ossec-volatile-init
+install -m 0755 ${WORKDIR}/ossec-volatile-init ${D}${sysconfdir}/init.d/ossec-volatile-init
 
 
 }
