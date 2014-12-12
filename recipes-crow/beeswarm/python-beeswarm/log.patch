@@ -1,0 +1,24 @@
+diff -ur Beeswarm-0.7.12-modified/beeswarm/drones/honeypot/capabilities/handlerbase.py Beeswarm-0.7.12/beeswarm/drones/honeypot/capabilities/handlerbase.py
+--- Beeswarm-0.7.12-modified/beeswarm/drones/honeypot/capabilities/handlerbase.py       2014-12-12 21:43:35.574827656 +0100
++++ Beeswarm-0.7.13/beeswarm/drones/honeypot/capabilities/handlerbase.py        2014-12-07 21:04:22.000000000 +0100
+@@ -50,7 +50,7 @@
+         session = Session(address[0], address[1], protocol, self.users)
+         self.sessions[session.id] = session
+         session.destination_port = self.port
+-        logger.debug(
++        logger.error(
+             'Accepted {0} session on port {1} from {2}:{3}. ({4})'.format(protocol, self.port, address[0],
+                                                                           address[1], str(session.id)))
+         logger.debug('Size of session list for {0}: {1}'.format(protocol, len(self.sessions)))
+diff -ur Beeswarm-0.7.12-modified/beeswarm/drones/honeypot/models/session.py Beeswarm-0.7.12/beeswarm/drones/honeypot/models/session.py
+--- Beeswarm-0.7.12-modified/beeswarm/drones/honeypot/models/session.py 2014-12-12 21:44:25.686825627 +0100
++++ Beeswarm-0.7.13/beeswarm/drones/honeypot/models/session.py  2014-12-07 21:04:22.000000000 +0100
+@@ -97,7 +97,7 @@
+             kwargs['response'] = kwargs.get('response').encode('hex')
+ 
+         self.send_log(Messages.SESSION_PART_HONEYPOT_AUTH, self.login_attempts[-1])
+-        logger.debug('{0} authentication attempt from {1}:{2}. Credentials: {3}'.format(self.protocol, self.source_ip,
++        logger.error('{0} authentication attempt from {1}:{2}. Credentials: {3}'.format(self.protocol, self.source_ip,
+                                                                                         self.source_port,
+                                                                                         json.dumps(kwargs)))
+         return authenticated
